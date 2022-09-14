@@ -4,8 +4,8 @@ const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
-console.log(display);
 // variables
+console.log(display.value);
 let userText = "";
 let errorCount = 0;
 let startTime;
@@ -41,6 +41,10 @@ const typeController = (e) => {
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
+console.log(newLetterCorrect);
+
+!newLetterCorrect? errorCount++ : 0;
+console.log(errorCount);
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
@@ -60,14 +64,13 @@ const validate = (key) => {
   }
   return false;
 };
-
 // FINISHED TYPING
 const gameOver = () => {
   document.removeEventListener("keydown", typeController);
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
-  const timeTaken = (finishTime - startTime) / 1000;
+  const timeTaken = Math.ceil((finishTime - startTime) / 1000);
 
   // show result modal
   resultModal.innerHTML = "";
@@ -89,7 +92,7 @@ const gameOver = () => {
 
   // restart everything
   startTime = null;
-  errorCount = 0;
+  // errorCount = 0;
   userText = "";
   // display.classList.add("inactive");
 };
@@ -110,7 +113,6 @@ const start = () => {
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
 
     // finished timer
-    console.log(count);
     if (count === 0) {
       // -------------- START TYPING -----------------
       display.classList.add("inactive");
@@ -133,8 +135,7 @@ displayHistory();
 // Show typing time spent
 setInterval(() => {
   const currentTime = new Date().getTime();
-  const timeSpent = (currentTime - startTime) / 1000;
-
+  const timeSpent = Math.ceil((currentTime - startTime) / 1000);
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
 }, 1000);
