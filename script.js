@@ -4,7 +4,7 @@ const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
-
+console.log(display);
 // variables
 let userText = "";
 let errorCount = 0;
@@ -76,7 +76,7 @@ const gameOver = () => {
   // clear user text
   display.innerHTML = "";
   // make it inactive
-  display.classList.add("inactive");
+  // display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
@@ -91,7 +91,7 @@ const gameOver = () => {
   startTime = null;
   errorCount = 0;
   userText = "";
-  display.classList.add("inactive");
+  // display.classList.add("inactive");
 };
 
 const closeModal = () => {
@@ -110,11 +110,12 @@ const start = () => {
     countdownOverlay.innerHTML = '<h1>${count}</h1>';
 
     // finished timer
+    console.log(count);
     if (count == 0) {
       // -------------- START TYPING -----------------
+      display.classList.remove("inactive");
       document.addEventListener("keydown", typeController);
       countdownOverlay.style.display = "flex";
-      display.classList.remove("inactive");
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
