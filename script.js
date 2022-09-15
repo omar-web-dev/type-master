@@ -100,6 +100,7 @@ const closeModal = () => {
 };
 
 const start = () => {
+  errorCount = 0;
   // If already started, do not start again
   if (startTime) return;
 

@@ -190,12 +190,12 @@ button {
 @media only screen and (min-width: 701px ) {
   #histories{
     display: grid;
-    grid-template-columns: auto auto auto ;
-    justify-content: space-between;
+    grid-template-columns: auto auto auto;
+    /* justify-content: space-between;
     flex-direction: row;
     align-content: space-around;
     align-items: center;
-    justify-items: center;
+    justify-items: center; */
     grid-gap:15px;
   }
   .card {
