@@ -5,7 +5,6 @@ const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
 // variables
-console.log(display.value);
 let userText = "";
 let errorCount = 0;
 let startTime;
@@ -41,10 +40,8 @@ const typeController = (e) => {
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
-console.log(newLetterCorrect);
 
 !newLetterCorrect? errorCount++ : 0;
-console.log(errorCount);
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
